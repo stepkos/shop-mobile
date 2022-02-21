@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../Library/Android/sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.1852355072463768" />
         <entry key="..\:/Files/Develop/Programming/Android/shopApp/app/src/main/res/layout/activity_main.xml" value="0.19293478260869565" />
         <entry key="..\:/Files/Develop/Programming/Android/shopApp/app/src/main/res/layout/my_spinner_items.xml" value="0.13518518518518519" />
+        <entry key="app/src/main/res/layout/activity_add_product.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_card.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.625" />
+        <entry key="app/src/main/res/layout/my_spinner_items.xml" value="0.1693840579710145" />
       </map>
     </option>
   </component>
