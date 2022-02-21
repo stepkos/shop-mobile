@@ -2,7 +2,9 @@ package com.example.shopapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,7 +27,7 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
             R.drawable.set3
     };
 
-    int orderTotal;
+    int chosenId=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +43,22 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
 
         CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), pcs ,descriptions);
         spinner.setAdapter(customProductsAdapter);
+
+        findViewById(R.id.go_to_card).setOnClickListener(x -> {
+            Intent intent = new Intent(this, CardActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-
-        switch (position) {
-            case 0: orderTotal = 3824; break;
-            case 1: orderTotal = 5832; break;
-            case 2: orderTotal = 7764; break;
-            default:;
-        }
-        Toast.makeText(getApplicationContext(),descriptions[position]+" "+orderTotal,Toast.LENGTH_LONG).show();
+        chosenId = position;
+        Log.i("click", String.valueOf(position));
+        Toast.makeText(this, "test test", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(AddProductActivity.this, "test1", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),descriptions[position]+" "+orderTotal, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getBaseContext(),descriptions[position]+" "+orderTotal, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,descriptions[position]+" "+orderTotal,Toast.LENGTH_LONG).show();
     }
 
     @Override

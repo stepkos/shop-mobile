@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopApp">
         <activity
+            android:name=".CardActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddProductActivity"
             android:exported="true">
             <intent-filter>
