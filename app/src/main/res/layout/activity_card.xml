@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CardActivity">
 
+
     <ImageButton
         android:id="@+id/go_to_shop"
         android:layout_width="wrap_content"
@@ -17,5 +18,16 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/card_items"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="24dp"
+        android:dividerHeight="20dp"
+        android:divider="#00000000"
+        app:layout_constraintTop_toBottomOf="@+id/go_to_shop"
+        tools:layout_editor_absoluteX="0dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
