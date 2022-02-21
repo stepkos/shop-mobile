@@ -3,8 +3,14 @@ package com.example.shopapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -31,9 +37,40 @@ public class CartActivity extends AppCompatActivity {
                 R.drawable.set3
         };
 
-        CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), pcs, descriptions);
+        ArrayList<ArrayList<Integer>> items = new ArrayList<>();
+
+        SQLiteDatabase db = new DBConnector(getBaseContext()).getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM cart", new String[] {});
+        if (c.moveToFirst()) {
+            do {
+                ArrayList<Integer> tmp = new ArrayList<>();
+                tmp.add(c.getInt(0));
+                tmp.add(c.getInt(1));
+                tmp.add(c.getInt(2));
+                items.add(tmp);
+                Log.i("from_db", "0: " + String.valueOf(c.getInt(0)));
+                Log.i("from_db", "1: " + String.valueOf(c.getInt(1)));
+                Log.i("from_db", "2: " + String.valueOf(c.getInt(2)));
+                Log.i("from_db", "------------------------------");
+            } while(c.moveToNext());
+        }
+        db.close();
+
+        ArrayList<Integer> ids = new ArrayList<>();
+        for (ArrayList<Integer> e: items) {
+            ids.add(e.get(1));
+        }
+
+        int [] myPcs = new int[ids.size()];
+        String [] myDesc = new String[ids.size()];
+
+        for (int i=0; i<ids.size(); i++) {
+            myPcs[i] = pcs[ids.get(i)];
+            myDesc[i] = descriptions[ids.get(i)];
+        }
+
+        CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), myPcs, myDesc);
         cartItems = findViewById(R.id.cart_items);
         cartItems.setAdapter(customProductsAdapter);
-
     }
 }
