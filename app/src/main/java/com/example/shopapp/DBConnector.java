@@ -17,7 +17,7 @@ public class DBConnector extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE card (" +
+        db.execSQL("CREATE TABLE cart (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "product_id INTEGER NOT NULL," +
                 "amount INTEGER NOT NULL DEFAULT 1)"

@@ -5,16 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.Spinner;
 
-public class CardActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
 
-    ListView cardItems;
+    ListView cartItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card);
+        setContentView(R.layout.activity_cart);
 
         findViewById(R.id.go_to_shop).setOnClickListener(x -> {
             Intent intent = new Intent(this, AddProductActivity.class);
@@ -33,8 +32,8 @@ public class CardActivity extends AppCompatActivity {
         };
 
         CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), pcs, descriptions);
-        cardItems = findViewById(R.id.card_items);
-        cardItems.setAdapter(customProductsAdapter);
+        cartItems = findViewById(R.id.cart_items);
+        cartItems.setAdapter(customProductsAdapter);
 
     }
 }

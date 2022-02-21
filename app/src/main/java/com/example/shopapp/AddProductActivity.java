@@ -46,12 +46,12 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
         CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), pcs ,descriptions);
         spinner.setAdapter(customProductsAdapter);
 
-        findViewById(R.id.go_to_card).setOnClickListener(x -> {
-            Intent intent = new Intent(this, CardActivity.class);
+        findViewById(R.id.go_to_cart).setOnClickListener(x -> {
+            Intent intent = new Intent(this, CartActivity.class);
             startActivity(intent);
         });
 
-        findViewById(R.id.add_to_card).setOnClickListener(x -> {
+        findViewById(R.id.add_to_cart).setOnClickListener(x -> {
             String amount = ((EditText) findViewById(R.id.amount)).getText().toString();
             String productId = String.valueOf(chosenId);
 
@@ -59,7 +59,7 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
             Toast.makeText(this, amount + " " + productId, Toast.LENGTH_SHORT).show();
 
             SQLiteDatabase db = new DBConnector(getBaseContext()).getWritableDatabase();
-            db.execSQL(String.format("INSERT INTO card VALUES (null, %s, %s)", productId, amount));
+            db.execSQL(String.format("INSERT INTO cart VALUES (null, %s, %s)", productId, amount));
             db.close();
 
         });

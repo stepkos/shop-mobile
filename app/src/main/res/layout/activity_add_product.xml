@@ -41,18 +41,18 @@
         app:layout_constraintTop_toTopOf="@+id/spinner" />
 
     <ImageButton
-        android:id="@+id/add_to_card"
+        android:id="@+id/add_to_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:padding="20dp"
         android:src="@drawable/ic_add"
-        app:layout_constraintEnd_toStartOf="@+id/go_to_card"
+        app:layout_constraintEnd_toStartOf="@+id/go_to_cart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amount" />
 
     <ImageButton
-        android:id="@+id/go_to_card"
+        android:id="@+id/go_to_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -60,7 +60,7 @@
         android:padding="20dp"
         android:src="@drawable/ic_shopping_cart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/add_to_card"
+        app:layout_constraintStart_toEndOf="@+id/add_to_cart"
         app:layout_constraintTop_toBottomOf="@+id/amount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
