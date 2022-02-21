@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
         switch (position) {
             case 0: orderTotal = 3824; break;
             case 1: orderTotal = 5832; break;
