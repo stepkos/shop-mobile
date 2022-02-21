@@ -3,6 +3,7 @@ package com.example.shopapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,8 +54,15 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
         findViewById(R.id.add_to_card).setOnClickListener(x -> {
             String amount = ((EditText) findViewById(R.id.amount)).getText().toString();
             String productId = String.valueOf(chosenId);
+
             Log.i("click", amount + " " + productId);
             Toast.makeText(this, amount + " " + productId, Toast.LENGTH_SHORT).show();
+
+            SQLiteDatabase db = new DBConnector(getBaseContext()).getWritableDatabase();
+//            db.execSQL(String.format("INSERT INTO card VALUES (null, ?, ?)", productId, amount));
+            db.execSQL(String.format("INSERT INTO card VALUES (null, %s, %s)", productId, amount));
+            db.close();
+
         });
     }
 
@@ -62,11 +70,7 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
         chosenId = position;
         Log.i("click", String.valueOf(position));
-        Toast.makeText(this, "test test", Toast.LENGTH_SHORT).show();
-//        Toast.makeText(AddProductActivity.this, "test1", Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getApplicationContext(),descriptions[position]+" "+orderTotal, Toast.LENGTH_LONG).show();
-//        Toast.makeText(getBaseContext(),descriptions[position]+" "+orderTotal, Toast.LENGTH_LONG).show();
-//        Toast.makeText(this,descriptions[position]+" "+orderTotal,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"chosen position: " + chosenId,Toast.LENGTH_LONG).show();
     }
 
     @Override
