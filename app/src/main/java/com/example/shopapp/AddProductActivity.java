@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -47,6 +48,13 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
         findViewById(R.id.go_to_card).setOnClickListener(x -> {
             Intent intent = new Intent(this, CardActivity.class);
             startActivity(intent);
+        });
+
+        findViewById(R.id.add_to_card).setOnClickListener(x -> {
+            String amount = ((EditText) findViewById(R.id.amount)).getText().toString();
+            String productId = String.valueOf(chosenId);
+            Log.i("click", amount + " " + productId);
+            Toast.makeText(this, amount + " " + productId, Toast.LENGTH_SHORT).show();
         });
     }
 
