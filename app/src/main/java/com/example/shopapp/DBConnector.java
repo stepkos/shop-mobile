@@ -8,20 +8,28 @@ import androidx.annotation.Nullable;
 
 public class DBConnector extends SQLiteOpenHelper {
 
-    Context context;
+    private Context context;
+    public static final String DATABASE_NAME = "shop.db";
+    public static final int DATABASE_VERSION = 2;
 
     public DBConnector(@Nullable Context context) {
-        super(context, "shop.db", null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE cart (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "product_id INTEGER NOT NULL," +
-                "amount INTEGER NOT NULL DEFAULT 1)"
-        );
+        db.execSQL(ProductModel.getTableSchema());
+        db.execSQL(CartItemModel.getTableSchema());
+
+//        try {
+
+//            for(ProductModel product : initialProducts)
+//                db.insert(ProductModel.TABLE, null, product.constructCV());
+//
+//        } catch (NoSuchFieldException | IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

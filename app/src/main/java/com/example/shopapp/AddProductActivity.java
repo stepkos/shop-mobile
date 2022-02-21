@@ -59,6 +59,7 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
             Toast.makeText(this, amount + " " + productId, Toast.LENGTH_SHORT).show();
 
             SQLiteDatabase db = new DBConnector(getBaseContext()).getWritableDatabase();
+//            db.execSQL("INSERT INTO products VALUES (null, 2, kuba, opis, 5.5)");
             db.execSQL(String.format("INSERT INTO cart VALUES (null, %s, %s)", productId, amount));
             db.close();
 
