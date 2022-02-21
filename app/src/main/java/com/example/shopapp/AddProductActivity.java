@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddProductActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String [] descriptions = {
             "Game X G100, Core i5-10400F, 16 GB, GTX 1060, 512 GB M.2 PCIe Windows 10 Home", // 3645 zl
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_product);
 
         spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
 
-        MyAdapter myAdapter = new MyAdapter(getApplicationContext(), pcs ,descriptions);
-        spinner.setAdapter(myAdapter);
+        CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), pcs ,descriptions);
+        spinner.setAdapter(customProductsAdapter);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.example.shopapp;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MyAdapter extends BaseAdapter {
+public class CustomProductsAdapter extends BaseAdapter {
 
     Context context;
     int[] pcs;
@@ -18,7 +17,7 @@ public class MyAdapter extends BaseAdapter {
     ImageView imageView;
     TextView textView;
 
-    public MyAdapter(Context context, int pcs[], String[] descriptions) {
+    public CustomProductsAdapter(Context context, int pcs[], String[] descriptions) {
         super();
         this.context = context;
         this.pcs = pcs;
@@ -43,7 +42,7 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = layoutInflater.inflate(R.layout.my_spinner_items,null);
+        convertView = layoutInflater.inflate(R.layout.spinner_item,null);
         imageView = convertView.findViewById(R.id.image_view);
         textView = convertView.findViewById(R.id.textView);
         imageView.setImageResource(pcs[position]);
