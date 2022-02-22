@@ -1,5 +1,6 @@
 package com.example.shopapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -21,6 +22,9 @@ public class DBConnector extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(ProductModel.getTableSchema());
         db.execSQL(CartItemModel.getTableSchema());
+
+        for (ContentValues cv : ProductModel.getInitialData())
+            db.insert(ProductModel.TABLE_NAME, null, cv);
 
 //        try {
 
