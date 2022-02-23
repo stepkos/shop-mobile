@@ -29,7 +29,7 @@ public class ProductModel {
     }
 
     public static ArrayList<ContentValues> getInitialData() {
-        return new ArrayList<ContentValues>(Arrays.asList(
+        return new ArrayList<>(Arrays.asList(
                 getCVFromData(R.drawable.set1, "Komputer 1", "opis 1", 3999),
                 getCVFromData(R.drawable.set2, "Komputer 2", "opis 2", 7999),
                 getCVFromData(R.drawable.set3, "Komputer 3", "opis 3", 11999)

@@ -26,14 +26,6 @@ public class DBConnector extends SQLiteOpenHelper {
         for (ContentValues cv : ProductModel.getInitialData())
             db.insert(ProductModel.TABLE_NAME, null, cv);
 
-//        try {
-
-//            for(ProductModel product : initialProducts)
-//                db.insert(ProductModel.TABLE, null, product.constructCV());
-//
-//        } catch (NoSuchFieldException | IllegalAccessException e) {
-//            e.printStackTrace();
-//        }
     }
 
     @Override
