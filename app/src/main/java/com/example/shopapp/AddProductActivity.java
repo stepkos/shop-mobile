@@ -64,6 +64,10 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
             db.close();
 
         });
+
+        Log.i("msg", ProductModel.getAll(getBaseContext()).toString());
+
+
     }
 
     @Override

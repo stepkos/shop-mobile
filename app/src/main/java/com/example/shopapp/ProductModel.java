@@ -1,9 +1,15 @@
 package com.example.shopapp;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProductModel {
 
@@ -36,6 +42,26 @@ public class ProductModel {
                 getCVFromData(R.drawable.keyboard1, "Klawiatura SPC Gear GK630K", "Przelaczniki mechaniczne - Kailh Blue, Podswietlenie RGB", 279),
                 getCVFromData(R.drawable.mouse1, "Mysz SteelSeries Rival 600", "12000 DPI, 7 Przyciskow, TrueMove3+ Dual Sensor System", 349)
         ));
+    }
+
+    public static ArrayList<HashMap<String, Object>> getAll(Context context) {
+        SQLiteDatabase db = new DBConnector(context).getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, new String[] {});
+        ArrayList<HashMap<String, Object>> result = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                result.add(new HashMap<String, Object>() {{
+                    put("image_id (Integer)", cursor.getInt(0));
+                    put("name (String)", cursor.getString(1));
+                    put("description (String)", cursor.getString(2));
+                    put("price (Integer)", cursor.getInt(3));
+                }});
+            } while(cursor.moveToNext());
+        }
+        db.close();
+
+        return result;
     }
 
 }
