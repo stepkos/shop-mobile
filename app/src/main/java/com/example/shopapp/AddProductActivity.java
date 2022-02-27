@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
     ArrayList<HashMap<String, Object>> products;
     CustomProductsAdapter customProductsAdapter;
     Spinner spinner;
+    TextView description;
+    TextView price;
     int chosenId = 0;
 
     @Override
@@ -28,6 +31,20 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_add_product);
 
         setInitialStuff();
+        setListeners();
+    }
+
+    protected void setInitialStuff() {
+        spinner = findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(this);
+        description = findViewById(R.id.description);
+        price = findViewById(R.id.price_for_one);
+        products = ProductModel.getAll(getBaseContext());
+        customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), products);
+        spinner.setAdapter(customProductsAdapter);
+    }
+
+    protected void setListeners() {
 
         findViewById(R.id.go_to_cart).setOnClickListener(x -> {
             Intent intent = new Intent(this, CartActivity.class);
@@ -49,18 +66,14 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
 
     }
 
-    protected void setInitialStuff() {
-        spinner = findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(this);
-        products = ProductModel.getAll(getBaseContext());
-        customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), products);
-        spinner.setAdapter(customProductsAdapter);
-    }
-
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
         chosenId = position;
         Log.i("click", String.valueOf(position));
+
+        description.setText((String) products.get(position).get("description"));
+        price.setText(String.valueOf(products.get(position).get("price")));
+
         Toast.makeText(getApplicationContext(),"Chosen position: " + chosenId, Toast.LENGTH_LONG).show();
     }
 
