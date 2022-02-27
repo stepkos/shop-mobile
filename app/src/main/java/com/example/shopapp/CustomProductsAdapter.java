@@ -1,7 +1,7 @@
 package com.example.shopapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,11 +43,12 @@ public class CustomProductsAdapter extends BaseAdapter {
         return 0;
     }
 
+    @SuppressLint("ViewHolder")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = layoutInflater.inflate(R.layout.spinner_item,null);
-        imageView = convertView.findViewById(R.id.image_view);
-        textView = convertView.findViewById(R.id.textView);
+        imageView = convertView.findViewById(R.id.image_view_spinner_item);
+        textView = convertView.findViewById(R.id.text_view_spinner_item);
 
         imageView.setImageResource((int) products.get(position).get("image_id"));
         textView.setText((String) products.get(position).get("name"));

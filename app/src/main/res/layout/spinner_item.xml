@@ -8,12 +8,12 @@
         android:layout_height="50dp"
         android:padding="5dp"
         android:src="@drawable/ic_launcher_background"
-        android:id="@+id/image_view"/>
+        android:id="@+id/image_view_spinner_item"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
+        android:id="@+id/text_view_spinner_item"
         android:layout_gravity="center"
         android:padding="10dp"
         android:text="Zestaw"

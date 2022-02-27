@@ -17,20 +17,17 @@ import java.util.HashMap;
 
 public class AddProductActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    ArrayList<HashMap<String, Object>> products;
+    CustomProductsAdapter customProductsAdapter;
     Spinner spinner;
-    int chosenId=0;
+    int chosenId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
-        spinner = findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(this);
-
-        ArrayList<HashMap<String, Object>> products = ProductModel.getAll(getBaseContext());
-        CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), products);
-        spinner.setAdapter(customProductsAdapter);
+        setInitialStuff();
 
         findViewById(R.id.go_to_cart).setOnClickListener(x -> {
             Intent intent = new Intent(this, CartActivity.class);
@@ -50,6 +47,14 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
             Toast.makeText(this, "Added to cart: " + amount + " " + productId, Toast.LENGTH_SHORT).show();
         });
 
+    }
+
+    protected void setInitialStuff() {
+        spinner = findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(this);
+        products = ProductModel.getAll(getBaseContext());
+        customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), products);
+        spinner.setAdapter(customProductsAdapter);
     }
 
     @Override
