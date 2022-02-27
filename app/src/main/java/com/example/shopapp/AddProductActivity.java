@@ -8,27 +8,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class AddProductActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String [] descriptions = {
-            "Game X G100, Core i5-10400F, 16 GB, GTX 1060, 512 GB M.2 PCIe Windows 10 Home", // 3645 zl
-            "Game X G300, Core i5-10400F, 16 GB, RTX 3060, 1 TB M.2 PCIe", // 5349 zl
-            "Game X Powered By NZXT G700 White, Core i9-10850K, 16 GB, RTX 3080 Ti, 1 TB M.2 PCIe 1 TB HDD Windows 11 Home" // 15499
-    };
-
     Spinner spinner;
-
-    int [] pcs = {
-            R.drawable.set1,
-            R.drawable.set2,
-            R.drawable.set3
-    };
-
     int chosenId=0;
 
     @Override
@@ -39,11 +28,8 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
         spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, descriptions);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-
-        CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), pcs ,descriptions);
+        ArrayList<HashMap<String, Object>> products = ProductModel.getAll(getBaseContext());
+        CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), products);
         spinner.setAdapter(customProductsAdapter);
 
         findViewById(R.id.go_to_cart).setOnClickListener(x -> {
@@ -65,7 +51,7 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
 
         });
 
-        Log.i("msg", ProductModel.getAll(getBaseContext()).toString());
+//        Log.i("msg", ProductModel.getAll(getBaseContext()).toString());
 
 
     }
@@ -74,7 +60,7 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
         chosenId = position;
         Log.i("click", String.valueOf(position));
-        Toast.makeText(getApplicationContext(),"chosen position: " + chosenId,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Chosen position: " + chosenId, Toast.LENGTH_LONG).show();
     }
 
     @Override

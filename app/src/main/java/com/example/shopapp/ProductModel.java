@@ -52,10 +52,10 @@ public class ProductModel {
         if (cursor.moveToFirst()) {
             do {
                 result.add(new HashMap<String, Object>() {{
-                    put("image_id (Integer)", cursor.getInt(0));
-                    put("name (String)", cursor.getString(1));
-                    put("description (String)", cursor.getString(2));
-                    put("price (Integer)", cursor.getInt(3));
+                    put("image_id", cursor.getInt(cursor.getColumnIndexOrThrow("image_id")));
+                    put("name", cursor.getString(cursor.getColumnIndexOrThrow("name")));
+                    put("description", cursor.getString(cursor.getColumnIndexOrThrow("description")));
+                    put("price", cursor.getInt(cursor.getColumnIndexOrThrow("price")));
                 }});
             } while(cursor.moveToNext());
         }

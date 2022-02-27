@@ -1,6 +1,7 @@
 package com.example.shopapp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,26 +9,28 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class CustomProductsAdapter extends BaseAdapter {
 
     Context context;
-    int[] pcs;
-    String[] descriptions;
+    ArrayList<HashMap<String, Object>> products;
+
     LayoutInflater layoutInflater;
     ImageView imageView;
     TextView textView;
 
-    public CustomProductsAdapter(Context context, int pcs[], String[] descriptions) {
+    public CustomProductsAdapter(Context context, ArrayList<HashMap<String, Object>> products) {
         super();
         this.context = context;
-        this.pcs = pcs;
-        this.descriptions = descriptions;
+        this.products = products;
         layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return pcs.length;
+        return products.size();
     }
 
     @Override
@@ -45,8 +48,9 @@ public class CustomProductsAdapter extends BaseAdapter {
         convertView = layoutInflater.inflate(R.layout.spinner_item,null);
         imageView = convertView.findViewById(R.id.image_view);
         textView = convertView.findViewById(R.id.textView);
-        imageView.setImageResource(pcs[position]);
-        textView.setText(descriptions[position]);
+
+        imageView.setImageResource((int) products.get(position).get("image_id"));
+        textView.setText((String) products.get(position).get("name"));
         return convertView;
     }
 }

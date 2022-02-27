@@ -69,8 +69,8 @@ public class CartActivity extends AppCompatActivity {
             myDesc[i] = descriptions[ids.get(i)];
         }
 
-        CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), myPcs, myDesc);
+//        CustomProductsAdapter customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), myPcs, myDesc);
         cartItems = findViewById(R.id.cart_items);
-        cartItems.setAdapter(customProductsAdapter);
+//        cartItems.setAdapter(customProductsAdapter);
     }
 }
