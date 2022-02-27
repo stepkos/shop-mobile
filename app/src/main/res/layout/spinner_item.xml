@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:padding="5dp"
         android:src="@drawable/ic_launcher_background"
         android:id="@+id/image_view_spinner_item"/>
@@ -17,6 +17,7 @@
         android:layout_gravity="center"
         android:padding="10dp"
         android:text="Zestaw"
+        android:textSize="18sp"
         android:textColor="#131313"/>
 
 </LinearLayout>
