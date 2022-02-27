@@ -52,16 +52,12 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
         });
 
         findViewById(R.id.add_to_cart).setOnClickListener(x -> {
-            String amount = ((EditText) findViewById(R.id.amount)).getText().toString();
-            String productId = String.valueOf(chosenId);
-            Log.i("click", amount + " " + productId);
+            int amount = Integer.parseInt(((EditText) findViewById(R.id.amount)).getText().toString());
+            Log.i("click", amount + " " + chosenId);
 
-            SQLiteDatabase db = new DBConnector(getBaseContext()).getWritableDatabase();
-//            db.execSQL("INSERT INTO products VALUES (null, 2, kuba, opis, 5.5)");
-            db.execSQL(String.format("INSERT INTO cart VALUES (null, %s, %s)", productId, amount));
-            db.close();
+            CartItemModel.addProducts(getBaseContext(), chosenId, amount);
 
-            Toast.makeText(this, "Added to cart: " + amount + " " + productId, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Added to cart: " + amount + " " + chosenId, Toast.LENGTH_SHORT).show();
         });
 
     }
