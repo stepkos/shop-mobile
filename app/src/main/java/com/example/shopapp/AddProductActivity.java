@@ -52,11 +52,13 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
         });
 
         findViewById(R.id.add_to_cart).setOnClickListener(x -> {
-            int amount = Integer.parseInt(((EditText) findViewById(R.id.amount)).getText().toString());
+            String s_amount = ((EditText) findViewById(R.id.amount)).getText().toString();
+            if (s_amount.equals(""))
+                s_amount = "1";
+
+            int amount = Integer.parseInt(s_amount);
             Log.i("click", amount + " " + chosenId);
-
             CartItemModel.addProducts(getBaseContext(), chosenId, amount);
-
             Toast.makeText(this, "Added to cart: " + amount + " " + chosenId, Toast.LENGTH_SHORT).show();
         });
 

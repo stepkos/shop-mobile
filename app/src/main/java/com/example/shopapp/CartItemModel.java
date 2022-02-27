@@ -17,12 +17,11 @@ public class CartItemModel {
     }
 
     public static void addProducts(Context context, int product_id, int amount) {
-
         SQLiteDatabase db = new DBConnector(context).getWritableDatabase();
         ContentValues cv = new ContentValues();
+
         cv.put("products_id", product_id);
         cv.put("amount", amount);
-
         db.insert(TABLE_NAME, null, cv);
         db.close();
 
