@@ -71,8 +71,11 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
         chosenId = position;
         Log.i("click", String.valueOf(position));
 
-        description.setText((String) products.get(position).get("description"));
-        price.setText(String.valueOf(products.get(position).get("price")));
+        String dc = (String) products.get(position).get("description");
+        String pr = "Cena za sztuke: " + String.valueOf(products.get(position).get("price")) + " PLN";
+
+        description.setText(dc);
+        price.setText(pr);
 
         Toast.makeText(getApplicationContext(),"Chosen position: " + chosenId, Toast.LENGTH_LONG).show();
     }
