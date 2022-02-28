@@ -51,4 +51,10 @@ public class CartItemModel {
         return result;
     }
 
+    public static void cleanCart(Context context) {
+        SQLiteDatabase db = new DBConnector(context).getReadableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME);
+        db.close();
+    }
+
 }

@@ -44,6 +44,12 @@ public class CartActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        findViewById(R.id.buy).setOnClickListener(x -> {
+            CartItemModel.cleanCart(getBaseContext());
+            setInitialStuff();
+            updateSum();
+        });
+
     }
 
     protected void updateSum() {
