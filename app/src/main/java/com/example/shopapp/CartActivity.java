@@ -3,19 +3,15 @@ package com.example.shopapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CartActivity extends AppCompatActivity {
 
-    ArrayList<HashMap<String, Object>> products;
+    ArrayList<HashMap<String, Object>> cartProducts;
     CustomProductsAdapter customProductsAdapter;
     ListView cartItems;
 
@@ -29,9 +25,9 @@ public class CartActivity extends AppCompatActivity {
     }
 
     protected void setInitialStuff() {
-        products = ProductModel.getAll(getBaseContext());
+        cartProducts = CartItemModel.getAllProductsFromCart(getBaseContext());
         cartItems = findViewById(R.id.cart_items);
-        customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), products);
+        customProductsAdapter = new CustomProductsAdapter(getApplicationContext(), cartProducts);
         cartItems.setAdapter(customProductsAdapter);
     }
 

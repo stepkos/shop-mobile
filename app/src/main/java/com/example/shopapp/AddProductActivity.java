@@ -66,7 +66,7 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-        chosenId = position;
+        chosenId = position + 1;
         Log.i("click", String.valueOf(position));
 
         String dc = (String) products.get(position).get("description");
