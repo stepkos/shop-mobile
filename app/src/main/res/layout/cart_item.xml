@@ -3,6 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cart_item_amount"
+        android:text="X5"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingVertical="16dp"
+        android:paddingLeft="7dp"
+        android:textColor="@color/purple_700"
+        />
+
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -36,15 +48,22 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cart_item_amount"
-        android:text="X5"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingVertical="18dp"
-        android:textColor="@color/purple_700"
-        />
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:padding="8dp"
+        >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:backgroundTint="@color/red"
+            />
+
+    </LinearLayout>
+
 
 </LinearLayout>
