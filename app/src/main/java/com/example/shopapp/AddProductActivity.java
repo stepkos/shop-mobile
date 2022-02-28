@@ -58,7 +58,8 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
 
             int amount = Integer.parseInt(s_amount);
             Log.i("click", amount + " " + chosenId);
-            CartItemModel.addProducts(getBaseContext(), chosenId, amount);
+
+            CartItemModel.addProducts(getBaseContext(), (Integer) products.get(chosenId).get("id"), amount);
             Toast.makeText(this, "Added to cart: " + amount + " " + chosenId, Toast.LENGTH_SHORT).show();
         });
 
@@ -66,11 +67,11 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-        chosenId = position + 1;
+        chosenId = position;
         Log.i("click", String.valueOf(position));
 
         String dc = (String) products.get(position).get("description");
-        String pr = "Cena za sztuke: " + String.valueOf(products.get(position).get("price")) + " PLN";
+        String pr = "Cena za sztuke: " + products.get(position).get("price") + " PLN";
 
         description.setText(dc);
         price.setText(pr);

@@ -52,6 +52,7 @@ public class ProductModel {
         if (cursor.moveToFirst()) {
             do {
                 result.add(new HashMap<String, Object>() {{
+                    put("id", cursor.getInt(cursor.getColumnIndexOrThrow("id")));
                     put("image_id", cursor.getInt(cursor.getColumnIndexOrThrow("image_id")));
                     put("name", cursor.getString(cursor.getColumnIndexOrThrow("name")));
                     put("description", cursor.getString(cursor.getColumnIndexOrThrow("description")));
