@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +49,14 @@ public class CartActivity extends AppCompatActivity {
             CartItemModel.cleanCart(getBaseContext());
             setInitialStuff();
             updateSum();
+        });
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            if (view.getId() == R.id.delete_item) {
+                CartItemModel.deleteItem(getBaseContext(), (Integer) cartItems.get(position).get("item_id"));
+                setInitialStuff();
+                updateSum();
+            }
         });
 
     }

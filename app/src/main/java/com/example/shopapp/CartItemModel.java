@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class CartItemModel {
 
     public static String getTableSchema() {
         return "CREATE TABLE " + TABLE_NAME + " (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "item_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "products_id INTEGER," +
                     "amount INTEGER" +
                 ");";
@@ -38,6 +39,7 @@ public class CartItemModel {
         if (cursor.moveToFirst()) {
             do {
                 result.add(new HashMap<String, Object>() {{
+                    put("item_id", cursor.getInt(cursor.getColumnIndexOrThrow("item_id")));
                     put("image_id", cursor.getInt(cursor.getColumnIndexOrThrow("image_id")));
                     put("name", cursor.getString(cursor.getColumnIndexOrThrow("name")));
                     put("description", cursor.getString(cursor.getColumnIndexOrThrow("description")));
@@ -54,6 +56,13 @@ public class CartItemModel {
     public static void cleanCart(Context context) {
         SQLiteDatabase db = new DBConnector(context).getReadableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME);
+        db.close();
+    }
+
+    public static void deleteItem(Context context, int position) {
+        Toast.makeText(context.getApplicationContext(), "Delete: " + position, Toast.LENGTH_SHORT).show();
+        SQLiteDatabase db = new DBConnector(context).getReadableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE cart_items.item_id = " + position);
         db.close();
     }
 

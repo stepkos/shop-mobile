@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -24,6 +26,7 @@ public class CustomCartItemsAdapter extends BaseAdapter {
     TextView name;
     TextView price;
     TextView amount;
+    ImageButton deleteCartItem;
 
     public CustomCartItemsAdapter(Context context, ArrayList<HashMap<String, Object>> products) {
         super();
@@ -55,11 +58,20 @@ public class CustomCartItemsAdapter extends BaseAdapter {
         name = convertView.findViewById(R.id.text_view_cart_item);
         price = convertView.findViewById(R.id.cart_item_price);
         amount = convertView.findViewById(R.id.cart_item_amount);
+        deleteCartItem = convertView.findViewById(R.id.delete_item);
 
         imageView.setImageResource((int) products.get(position).get("image_id"));
         name.setText((String) products.get(position).get("name"));
         price.setText(products.get(position).get("price") + " PLN");
         amount.setText("X" + products.get(position).get("amount"));
+
+        setClickListener(deleteCartItem, position, parent);
         return convertView;
+    }
+
+    private void setClickListener(View view, final int position, final ViewGroup parent) {
+        view.setOnClickListener(v -> {
+            ((ListView) parent).performItemClick(v, position, 0);
+        });
     }
 }
