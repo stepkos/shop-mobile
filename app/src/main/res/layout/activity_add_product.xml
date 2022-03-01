@@ -36,7 +36,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="90dp"
         android:inputType="number"
-        android:digits="123456789"
+        android:digits="0123456789"
         android:maxLength="4"
         android:hint="Ilosc"
         android:textSize="20sp"

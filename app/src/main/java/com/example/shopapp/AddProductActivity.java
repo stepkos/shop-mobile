@@ -57,10 +57,15 @@ public class AddProductActivity extends AppCompatActivity implements AdapterView
                 s_amount = "1";
 
             int amount = Integer.parseInt(s_amount);
+
             Log.i("click", amount + " " + chosenId);
 
-            CartItemModel.addProducts(getBaseContext(), (Integer) products.get(chosenId).get("id"), amount);
-            Toast.makeText(this, "Added to cart: " + amount + " " + chosenId, Toast.LENGTH_SHORT).show();
+            if (amount == 0)
+                Toast.makeText(this, "Cannot be 0", Toast.LENGTH_SHORT).show();
+            else {
+                CartItemModel.addProducts(getBaseContext(), (Integer) products.get(chosenId).get("id"), amount);
+                Toast.makeText(this, "Added to cart: " + amount + " " + chosenId, Toast.LENGTH_SHORT).show();
+            }
         });
 
     }
