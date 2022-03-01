@@ -35,6 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="90dp"
+        android:inputType="number"
+        android:digits="123456789"
         android:hint="ilosc"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView3"
