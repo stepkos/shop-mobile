@@ -37,7 +37,8 @@
         android:layout_marginTop="90dp"
         android:inputType="number"
         android:digits="123456789"
-        android:hint="ilosc"
+        android:maxLength="4"
+        android:hint="Ilosc"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/description" />
