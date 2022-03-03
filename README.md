@@ -12,17 +12,21 @@
 - The user can remove specific product from the cart 
 - The buy button cleaning the cart
 
+### Screens
 <p>
   <img src="https://github.com/stepkos/shopApp/blob/main/app/doc/sc_main.png" width="300">
   <img src="https://github.com/stepkos/shopApp/blob/main/app/doc/sc_cart.png" width="300">
 </p>
 
-![Cart view](https://github.com/stepkos/shopApp/blob/main/app/doc/db_schema.png)
-
-
-
 ## Functionalities
+- SQLite3 database
+- Auto create db
+- Auto fill initial datas
+- Custom adapters for generate dynamic elements
+- Input data validation
 
+## Database
+![Cart view](https://github.com/stepkos/shopApp/blob/main/app/doc/db_schema.png)
 
 ## Author
 - Jakub Stępkowski [stepkos](https://github.com/stepkos)
