@@ -32,4 +32,4 @@
 - Jakub Stępkowski [stepkos](https://github.com/stepkos)
 
 ## License
-All rights reserved
+- All rights reserved
