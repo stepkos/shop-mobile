@@ -12,7 +12,7 @@
 - The user can remove specific product from the cart 
 - The buy button cleaning the cart
 
-### Screens
+### Screenshots
 <p>
   <img src="https://github.com/stepkos/shopApp/blob/main/app/doc/sc_main.png" width="300">
   <img src="https://github.com/stepkos/shopApp/blob/main/app/doc/sc_cart.png" width="300">
